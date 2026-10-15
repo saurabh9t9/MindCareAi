@@ -6,7 +6,8 @@
       "framework": "flask",
       "functions": {
         "app.py": {
-          "maxDuration": 60
+          "maxDuration": 60,
+          "includeFiles": "public/static/**"
         }
       }
     },

@@ -31,7 +31,8 @@ The app automatically reads environment settings from the project-root `.env` fi
 Import this project into Vercel with the repository root as the project root. Vercel detects the Flask
 application in `app.py`, installs dependencies from `requirements.txt`, and uses `vercel.json` to
 allow up to 60 seconds for a chat request. Static assets are served from `public/static/`; the local
-`python app.py` workflow continues to serve them at the same `/static/` URLs.
+`python app.py` workflow continues to serve them at the same `/static/` URLs. The Flask function
+explicitly bundles these files so its static route can serve them after deployment.
 
 The Vercel project defines two services: `app` serves all public paths, while `mannmitra` is an
 internal Python service with its own WSGI entrypoint at `vercel_app:app` in `mannmitra/`. The public app
