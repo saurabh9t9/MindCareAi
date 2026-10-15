@@ -89,8 +89,26 @@ class GeminiProviderTests(unittest.TestCase):
         body = json.loads(request.data)
         self.assertEqual(body["systemInstruction"]["parts"][0]["text"], "Support safely.")
         self.assertEqual([item["role"] for item in body["contents"]], ["user", "model", "user"])
+        self.assertEqual(body["generationConfig"]["maxOutputTokens"], 768)
         self.assertEqual(body["generationConfig"]["thinkingConfig"]["thinkingLevel"], "low")
         self.assertEqual(urlopen.call_args.kwargs["timeout"], 25)
+
+    def test_gemini_rejects_output_truncated_by_token_limit(self):
+        response = Mock()
+        response.__enter__ = Mock(return_value=response)
+        response.__exit__ = Mock(return_value=None)
+        response.read.return_value = json.dumps({
+            "candidates": [{
+                "finishReason": "MAX_TOKENS",
+                "content": {"parts": [{"text": "This reply stops"}]},
+            }]
+        }).encode()
+
+        with patch.dict("os.environ", {"GEMINI_API_KEY": "test-key"}, clear=False):
+            provider = GeminiProvider()
+        with patch("mannmitra.llm.urllib.request.urlopen", return_value=response):
+            with self.assertRaisesRegex(ValueError, "truncated"):
+                provider.reply("Support safely.", [], "What can I do?")
 
     def test_provider_selection_uses_gemini_when_configured(self):
         with patch.dict("os.environ", {"GEMINI_API_KEY": "test-key"}, clear=True):

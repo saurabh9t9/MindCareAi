@@ -93,7 +93,7 @@ class GeminiProvider(Provider):
             "systemInstruction": {"parts": [{"text": system}]},
             "contents": contents,
             "generationConfig": {
-                "maxOutputTokens": 300,
+                "maxOutputTokens": 768,
                 "temperature": 0.5,
                 "thinkingConfig": {"thinkingLevel": "low"},
             },
@@ -113,7 +113,10 @@ class GeminiProvider(Provider):
         candidates = data.get("candidates", [])
         if not candidates:
             raise ValueError("Gemini returned no response candidates.")
-        parts = candidates[0].get("content", {}).get("parts", [])
+        candidate = candidates[0]
+        if candidate.get("finishReason") == "MAX_TOKENS":
+            raise ValueError("Gemini response was truncated by the output token limit.")
+        parts = candidate.get("content", {}).get("parts", [])
         reply = "".join(
             part["text"] for part in parts
             if isinstance(part, dict) and isinstance(part.get("text"), str)
