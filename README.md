@@ -34,7 +34,7 @@ allow up to 60 seconds for a chat request. Static assets are served from `public
 `python app.py` workflow continues to serve them at the same `/static/` URLs.
 
 The Vercel project defines two services: `app` serves all public paths, while `mannmitra` is an
-internal Python service with its own WSGI entrypoint at `mannmitra/vercel_app.py`. The public app
+internal Python service with its own WSGI entrypoint at `vercel_app:app` in `mannmitra/`. The public app
 continues to handle its embedded chat directly; it does not call the internal service, so no binding
 is configured. Add a public rewrite or a caller-side binding only if you later want to route traffic
 to or call that standalone service.

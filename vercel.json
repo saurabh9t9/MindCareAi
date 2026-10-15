@@ -13,7 +13,7 @@
     "mannmitra": {
       "root": "mannmitra",
       "runtime": "python",
-      "entrypoint": "vercel_app.py:app"
+      "entrypoint": "vercel_app:app"
     }
   },
   "rewrites": [
