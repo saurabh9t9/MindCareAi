@@ -1,8 +1,27 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "functions": {
-    "app.py": {
-      "maxDuration": 60
+  "services": {
+    "app": {
+      "root": ".",
+      "framework": "flask",
+      "functions": {
+        "app.py": {
+          "maxDuration": 60
+        }
+      }
+    },
+    "mannmitra": {
+      "root": "mannmitra",
+      "runtime": "python",
+      "entrypoint": "vercel_app.py:app"
     }
-  }
+  },
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": {
+        "service": "app"
+      }
+    }
+  ]
 }

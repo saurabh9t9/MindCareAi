@@ -33,6 +33,12 @@ application in `app.py`, installs dependencies from `requirements.txt`, and uses
 allow up to 60 seconds for a chat request. Static assets are served from `public/static/`; the local
 `python app.py` workflow continues to serve them at the same `/static/` URLs.
 
+The Vercel project defines two services: `app` serves all public paths, while `mannmitra` is an
+internal Python service with its own WSGI entrypoint at `mannmitra/vercel_app.py`. The public app
+continues to handle its embedded chat directly; it does not call the internal service, so no binding
+is configured. Add a public rewrite or a caller-side binding only if you later want to route traffic
+to or call that standalone service.
+
 Create a Supabase project and run [`supabase/schema.sql`](./supabase/schema.sql) in its SQL Editor.
 In Vercel Project Settings → Environment Variables, set:
 
