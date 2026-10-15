@@ -852,7 +852,8 @@ input:focus {
 }
 
 .chat-log {
-  flex: 1;
+  flex: 1 1 0;
+  min-height: 0;
   overflow-y: auto;
   display: flex;
   flex-direction: column;
@@ -861,11 +862,13 @@ input:focus {
 }
 
 .chat-message {
+  flex: 0 0 auto;
   max-width: 88%;
   margin: 0;
   padding: 10px 13px;
   border-radius: 15px;
   white-space: pre-wrap;
+  overflow-wrap: anywhere;
   line-height: 1.5;
   font-size: 0.9rem;
 }
