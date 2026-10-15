@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MindCare AI | SDG 3</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <div class="brand">
+        <span class="brand-mark">M</span>
+        <span>MindCare AI</span>
+      </div>
+      <nav class="main-nav">
+        <a href="#problem">Problem</a>
+        <a href="#solution">Solution</a>
+        <a href="#impact">Impact</a>
+        <a href="#ai-tools">AI features</a>
+      </nav>
+      <a class="nav-button" href="/assessment">Take a check-in</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <span class="eyebrow">SDG 3: Good Health and Well-being</span>
+          <h1>Supportive emotional wellness guidance for young minds.</h1>
+          <p>
+            MindCare AI combines guided check-ins with MannMitra, a conversational wellness companion. It encourages students to reflect and seek timely support instead of struggling alone.
+          </p>
+          <div class="cta-row">
+            <a class="primary-btn" href="/assessment">Start assessment</a>
+            <a class="secondary-btn" href="/dashboard">View dashboard</a>
+          </div>
+          <ul class="mini-stats">
+            <li><strong>{{ metrics.total_screenings }}</strong> check-ins</li>
+            <li><strong>{{ metrics.average_score }}</strong> average score</li>
+            <li><strong>{{ metrics.support_needed }}</strong> need support</li>
+          </ul>
+        </div>
+
+        <div class="hero-card">
+          <div class="impact-badge">Daily wellness overview</div>
+          <h3>Stress pattern</h3>
+          <div class="chart-bars">
+            <span style="height: 42%"></span>
+            <span style="height: 58%"></span>
+            <span style="height: 70%"></span>
+            <span style="height: 68%"></span>
+            <span style="height: 86%"></span>
+            <span style="height: 74%"></span>
+          </div>
+          <div class="metric-row">
+            <div>
+              <small>Students in check-in</small>
+              <strong>68%</strong>
+            </div>
+            <div>
+              <small>Support reached</small>
+              <strong>92%</strong>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="problem" class="section alt-bg">
+      <div class="container two-col">
+        <div>
+          <span class="section-tag">Problem</span>
+          <h2>Many young people face stress silently.</h2>
+        </div>
+        <div>
+          <p>
+            Lack of mental health support among youth often leads to stress, anxiety, irregular sleep, and emotional exhaustion. Students frequently hesitate to seek help due to stigma, lack of awareness, or no immediate access to a counselor.
+          </p>
+          <p>
+            A simple, accessible check-in can make emotional well-being more visible and encourage early intervention before conditions worsen.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="solution" class="section">
+      <div class="container">
+        <span class="section-tag">Solution</span>
+        <h2>AI wellness check-ins with compassionate guidance</h2>
+        <div class="feature-grid">
+          <article class="feature-card">
+            <div class="icon">🧠</div>
+            <h3>Smart screening</h3>
+            <p>Users answer quick questions about stress, sleep, mood, and daily wellbeing signals.</p>
+          </article>
+          <article class="feature-card">
+            <div class="icon">💬</div>
+            <h3>Guided chatbot</h3>
+            <p>MannMitra offers supportive conversation, calming exercises, and short self-checks. The demo works offline by default.</p>
+          </article>
+          <article class="feature-card">
+            <div class="icon">📊</div>
+            <h3>Early detection</h3>
+            <p>Patterns help identify when a person may need more support or check-in follow-ups.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="impact" class="section alt-bg">
+      <div class="container">
+        <span class="section-tag">Impact</span>
+        <h2>Designed to improve health outcomes and support systems</h2>
+        <div class="canvas-grid">
+          <div class="canvas-card"><h4>Target users</h4><p>College students, youth groups, school wellness teams, and community health programs.</p></div>
+          <div class="canvas-card"><h4>Problem solved</h4><p>Creates immediate access to mental health screening and emotional support.</p></div>
+          <div class="canvas-card"><h4>Value</h4><p>Helps people recognize risk early and access relevant guidance quickly.</p></div>
+          <div class="canvas-card"><h4>Long-term goal</h4><p>Reduce stress and anxiety through timely awareness and personalized support.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="ai-tools" class="section">
+      <div class="container">
+        <span class="section-tag">AI features</span>
+        <h2>How the system supports wellbeing</h2>
+        <div class="feature-grid">
+          <article class="feature-card">
+            <div class="icon">🔍</div>
+            <h3>Symptom analysis</h3>
+            <p>Detects emotional patterns based on mood, stress, sleep, and social engagement.</p>
+          </article>
+          <article class="feature-card">
+            <div class="icon">🛟</div>
+            <h3>Supportive response</h3>
+            <p>Offers calming, actionable ideas. Crisis messages bypass any language model and direct people to human support.</p>
+          </article>
+          <article class="feature-card">
+            <div class="icon">📈</div>
+            <h3>Trend monitoring</h3>
+            <p>Tracks repeated patterns to highlight students who may need follow-up support.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section form-section">
+      <div class="container form-wrap">
+        <div>
+          <span class="section-tag">Take a check-in</span>
+          <h2>Check how you're feeling today</h2>
+          <p>Short, supportive, and designed to help students reflect on mental well-being before stress grows.</p>
+        </div>
+
+        <a class="primary-btn large-action" href="/assessment">Start my wellness check-in</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-wrap">
+      <p>© 2026 MindCare AI — built for SDG 3 and student well-being.</p>
+      <a href="/dashboard">Wellness dashboard</a>
+    </div>
+  </footer>
+  {% include "chat_widget.html" %}
+  <script src="{{ url_for('static', filename='app.js') }}" defer></script>
+</body>
+</html>

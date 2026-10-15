@@ -1,0 +1,9 @@
+.env
+.env.*
+!.env.example
+__pycache__/
+*.py[cod]
+.venv/
+data/mannmitra.sqlite3
+data/screenings.json
+.vercelignore

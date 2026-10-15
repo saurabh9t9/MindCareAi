@@ -1,0 +1,32 @@
+<section class="chat-widget" aria-label="MannMitra wellness companion">
+  <button class="chat-toggle" id="chat-toggle" type="button" aria-expanded="false" aria-controls="chat-panel">
+    <span aria-hidden="true">✦</span> Chat with MannMitra
+  </button>
+  <div class="chat-panel" id="chat-panel" hidden>
+    <header class="chat-header">
+      <div>
+        <strong>MannMitra</strong>
+        <small>
+          Your assistant
+        </small>
+      </div>
+      <button class="chat-close" id="chat-close" type="button" aria-label="Close chat">×</button>
+    </header>
+    <p class="chat-notice">If you may be in immediate danger, call your local emergency number. In India, call 112.</p>
+    <div class="chat-log" id="chat-log" role="log" aria-live="polite" aria-relevant="additions"></div>
+    <div class="chat-actions" aria-label="Quick actions">
+      <button type="button" data-chat-command="/checkin">Check-in</button>
+      <button type="button" data-chat-command="/screen">Self-check</button>
+      <button type="button" data-chat-command="/tools">Calming tools</button>
+      <button type="button" data-chat-command="/chat">Chat freely</button>
+      <button type="button" data-chat-command="/cancel">Cancel check-in</button>
+    </div>
+    <form class="chat-form" id="chat-form">
+      <label class="visually-hidden" for="chat-input">Message MannMitra</label>
+      <input id="chat-input" name="message" maxlength="2000" autocomplete="off" placeholder="Type how you're feeling..." required>
+      <button type="submit">Send</button>
+    </form>
+    <p class="chat-status" id="chat-status" role="status" aria-live="polite"></p>
+    <p class="chat-privacy">Chat text is not saved by this app. If cloud AI is enabled, messages are sent to its provider. Type <code>/privacy</code> or <code>/delete</code> for details.</p>
+  </div>
+</section>

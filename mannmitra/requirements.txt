@@ -1,0 +1,3 @@
+# The core agent, web app, Telegram bot, and Gemini REST client use only the Python standard library (3.9+).
+# Optional, only if MANNMITRA_PROVIDER=watsonx:
+# ibm-watsonx-ai

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MindCare AI Result</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="dashboard-body">
+  <header class="dashboard-header">
+    <div class="container dashboard-nav">
+      <div class="brand">
+        <span class="brand-mark">M</span>
+        <span>MindCare AI</span>
+      </div>
+      <nav class="main-nav">
+        <a href="/">Home</a>
+        <a href="/assessment">Assess</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container result-main">
+    <section class="result-card">
+      <div class="section-tag">Your wellbeing snapshot</div>
+
+      <div class="result-header">
+        <div>
+          <h1>{{ result.student_name }}</h1>
+          <p class="assist-text">Here is your current support summary.</p>
+        </div>
+        <div class="score-pill risk-{{ result.risk_level.lower().replace(' ', '-') }}">
+          {{ result.score }}/100
+        </div>
+      </div>
+
+      <div class="result-grid">
+        <div class="info-box">
+          <small>Risk level</small>
+          <strong>{{ result.risk_level }}</strong>
+        </div>
+        <div class="info-box">
+          <small>Symptoms reported</small>
+          <strong>{{ result.symptom_count }}</strong>
+        </div>
+        <div class="info-box">
+          <small>Social support</small>
+          <strong>{{ result.social_support }}</strong>
+        </div>
+      </div>
+
+      <div class="message-box">
+        <h3>{{ result.message }}</h3>
+        <p>{{ result.explanation }}</p>
+      </div>
+
+      <div class="recommendation-box">
+        <h3>Recommended next steps</h3>
+        <ul>
+          {% for item in result.recommendations %}
+            <li>{{ item }}</li>
+          {% endfor %}
+        </ul>
+      </div>
+
+      <div class="cta-row centered">
+        <a class="primary-btn" href="/assessment">Check in again</a>
+        <a class="secondary-btn" href="/dashboard">View dashboard</a>
+      </div>
+    </section>
+  </main>
+  {% include "chat_widget.html" %}
+  <script src="{{ url_for('static', filename='app.js') }}" defer></script>
+</body>
+</html>

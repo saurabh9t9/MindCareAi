@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MindCare AI Assessment</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="dashboard-body">
+  <header class="dashboard-header">
+    <div class="container dashboard-nav">
+      <div class="brand">
+        <span class="brand-mark">M</span>
+        <span>MindCare AI</span>
+      </div>
+      <nav class="main-nav">
+        <a href="/">Home</a>
+        <a href="/dashboard">Dashboard</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container assess-main">
+    <section class="assessment-box">
+      <div class="section-tag">Mental wellness check-in</div>
+      <h1>How are you feeling today?</h1>
+      <p class="assist-text">Answer a few quick questions. This is a supportive, low-pressure check-in.</p>
+
+      <form action="/assess" method="POST" class="wellness-form">
+        <div class="form-row">
+          <label>Student name</label>
+          <input type="text" name="student_name" placeholder="Your name" required>
+        </div>
+
+        <div class="form-row two-up">
+          <div>
+            <label>Age</label>
+            <input type="number" name="age" min="10" max="30" placeholder="18" required>
+          </div>
+          <div>
+            <label>Stress level</label>
+            <select name="stress_level">
+              <option>Low</option>
+              <option>Moderate</option>
+              <option>High</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-row two-up">
+          <div>
+            <label>Sleep hours</label>
+            <select name="sleep_hours">
+              <option>4-5</option>
+              <option>6</option>
+              <option>7</option>
+              <option>8+</option>
+            </select>
+          </div>
+          <div>
+            <label>Current mood</label>
+            <select name="mood">
+              <option>Great</option>
+              <option>Okay</option>
+              <option>Low</option>
+              <option>Very low</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <label>Symptoms you are noticing</label>
+          <div class="checkbox-group">
+            <label><input type="checkbox" name="symptoms" value="Anxiety"> Anxiety</label>
+            <label><input type="checkbox" name="symptoms" value="Trouble focusing"> Trouble focusing</label>
+            <label><input type="checkbox" name="symptoms" value="Low energy"> Low energy</label>
+            <label><input type="checkbox" name="symptoms" value="Irritability"> Irritability</label>
+            <label><input type="checkbox" name="symptoms" value="Headache"> Headache</label>
+            <label><input type="checkbox" name="symptoms" value="Sleep problems"> Sleep problems</label>
+          </div>
+        </div>
+
+        <div class="form-row two-up">
+          <div>
+            <label>How often do you feel overwhelmed?</label>
+            <select name="days">
+              <option>Rarely</option>
+              <option>Some days</option>
+              <option>Most days</option>
+              <option>Almost every day</option>
+            </select>
+          </div>
+          <div>
+            <label>How connected do you feel socially?</label>
+            <select name="social">
+              <option>Often</option>
+              <option>Sometimes</option>
+              <option>Rarely</option>
+            </select>
+          </div>
+        </div>
+
+        <button type="submit" class="primary-btn full-width">Submit check-in</button>
+      </form>
+    </section>
+  </main>
+  {% include "chat_widget.html" %}
+  <script src="{{ url_for('static', filename='app.js') }}" defer></script>
+</body>
+</html>

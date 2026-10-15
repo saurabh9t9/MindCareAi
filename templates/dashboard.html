@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MindCare AI Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="dashboard-body">
+  <header class="dashboard-header">
+    <div class="container dashboard-nav">
+      <div class="brand">
+        <span class="brand-mark">M</span>
+        <span>MindCare AI</span>
+      </div>
+      <nav class="main-nav">
+        <a href="/">Home</a>
+        <a href="/assessment">Check-in</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container dashboard-main">
+    <section class="dashboard-intro">
+      <div>
+        <div class="section-tag">Wellness dashboard</div>
+        <h1>Student support overview</h1>
+      </div>
+      <a class="primary-btn" href="/assessment">New assessment</a>
+    </section>
+
+    <section class="stats-grid">
+      <div class="stat-card accent-blue">
+        <small>Total check-ins</small>
+        <strong>{{ stats.total }}</strong>
+      </div>
+      <div class="stat-card accent-green">
+        <small>Average score</small>
+        <strong>{{ stats.average }}</strong>
+      </div>
+      <div class="stat-card accent-red">
+        <small>High risk</small>
+        <strong>{{ stats.high_risk }}</strong>
+      </div>
+      <div class="stat-card accent-gold">
+        <small>Moderate risk</small>
+        <strong>{{ stats.moderate }}</strong>
+      </div>
+    </section>
+
+    <section class="table-card">
+      <h2>Recent screening data</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Risk</th>
+            <th>Score</th>
+            <th>Symptoms</th>
+            <th>Date</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for item in screenings %}
+          <tr>
+            <td>{{ item.student_name }}</td>
+            <td><span class="risk-tag risk-{{ item.risk_level.lower().replace(' ', '-') }}">{{ item.risk_level }}</span></td>
+            <td>{{ [item.score, 100] | min }}/100</td>
+            <td>{{ item.symptoms | join(', ') if item.symptoms else 'None listed' }}</td>
+            <td>{{ item.date }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </section>
+  </main>
+  {% include "chat_widget.html" %}
+  <script src="{{ url_for('static', filename='app.js') }}" defer></script>
+</body>
+</html>

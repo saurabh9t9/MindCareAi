@@ -1,0 +1,8 @@
+{
+  "_note": "VERIFY every number below for your region before real use. Helplines change.",
+  "helplines": [
+    {"name": "Tele-MANAS (India, free mental health helpline)", "number": "14416"},
+    {"name": "Emergency services (India)", "number": "112"}
+  ],
+  "international": "Outside India? Find a local helpline at https://findahelpline.com"
+}
